@@ -6,9 +6,6 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSList;
-import org.apache.uima.jcas.cas.IntegerArray;
-import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import edu.cmu.lti.f14.hw3.hw3_yuhsink.typesystems.Document;
