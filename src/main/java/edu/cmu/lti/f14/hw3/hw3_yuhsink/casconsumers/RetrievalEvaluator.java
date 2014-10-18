@@ -29,16 +29,14 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
   /** query and text relevant values **/
   public ArrayList<Integer> relList;
 
-  //public ArrayList<FSList> fsList;
-
   public ArrayList<String> textList;
+  
   public ArrayList<HashMap<String, Integer>> vector;
   
   public void initialize() throws ResourceInitializationException {
 
     qIdList = new ArrayList<Integer>();
     relList = new ArrayList<Integer>();
-    //fsList = new ArrayList<FSList>();
     textList = new ArrayList<String>();
     vector = new ArrayList <HashMap <String, Integer>>();
   }
