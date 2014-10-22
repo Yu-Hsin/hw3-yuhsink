@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cmu.lti.11791.f14.hw3</groupId>
 	<artifactId>hw3-yuhsink</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<repositories>
 		<repository>
@@ -125,6 +125,6 @@
 	<scm>
 		<connection>scm:git:git@github.com:Yu-Hsin/hw3-yuhsink.git</connection>
 		<developerConnection>scm:git:git@github.com:Yu-Hsin/hw3-yuhsink.git</developerConnection>
-	  <tag>hw3-yuhsink-0.0.1 </tag>
+	  <tag>done2 </tag>
   </scm>
 </project>
