@@ -125,6 +125,6 @@
 	<scm>
 		<connection>scm:git:git@github.com:Yu-Hsin/hw3-yuhsink.git</connection>
 		<developerConnection>scm:git:git@github.com:Yu-Hsin/hw3-yuhsink.git</developerConnection>
-	  <tag>donedonedonedone </tag>
+	  <tag>do </tag>
   </scm>
 </project>
