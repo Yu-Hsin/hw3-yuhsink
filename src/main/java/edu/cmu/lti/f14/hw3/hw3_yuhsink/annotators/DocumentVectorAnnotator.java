@@ -29,13 +29,9 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
       try {
         createTermFreqVector(jcas, doc);
       } catch (FileNotFoundException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
     }
-    
-   
-
   }
 
   /**
@@ -55,48 +51,54 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
   }
 
   /**
-   * Do case normalization, stop words removal
+   * Do case normalization, stop words removal and stemming
+   * 
    * @param doc
    *          input text
    * @return a list of tokens
-   * @throws FileNotFoundException 
+   * @throws FileNotFoundException
    */
   List<String> tokenize1(String doc) throws FileNotFoundException {
-    
+
     List<String> res = new ArrayList<String>();
-    BufferedReader br = new BufferedReader (new FileReader("stopwords.txt"));
-    HashSet <String> stopword = new HashSet <String>();
-    String line ="";
+    BufferedReader br = new BufferedReader(new FileReader("stopwords.txt"));
+    HashSet<String> stopword = new HashSet<String>();
+    String line = "";
+    // read all the stop words from the file and store in a hashset
     try {
-      while ((line = br.readLine()) != null) 
-          stopword.add(line);
+      while ((line = br.readLine()) != null)
+        stopword.add(line);
       br.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+
     for (String s : doc.split("\\s+")) {
+      // normalization
       String tmp = s.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+      // stemming
       String stemword = StanfordLemmatizer.stemWord(tmp);
+      // stop words removal
       if (!stopword.contains(stemword))
-          res.add(stemword);
+        res.add(stemword);
     }
-      
+
     return res;
   }
-  
 
   /**
+   * This function calculate the frequency of each word in each document and store them as a word
+   * vector
    * 
-   * @param jcas
-   * @param doc
-   * @throws FileNotFoundException 
+   * @param jcas the JCas containing the inputs for the processing
+   * @param doc the document you are going to process
+   * @throws FileNotFoundException
    */
 
   private void createTermFreqVector(JCas jcas, Document doc) throws FileNotFoundException {
 
     String docText = doc.getText();
-    //List<String> tokenizedResult = tokenize1(docText);
+    // List<String> tokenizedResult = tokenize1(docText);
     List<String> tokenizedResult = tokenize0(docText);
     HashMap<String, Token> table = new HashMap<String, Token>(); // store the String and its
                                                                  // corresponding Token as a pair
@@ -120,10 +122,5 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
       tokenArr.add(table.get(word));
     }
     doc.setTokenList(Utils.fromCollectionToFSList(jcas, tokenArr));
-
-    // TO DO: construct a vector of tokens and update the tokenList in CAS
-    // TO DO: use tokenize0 from above
-
   }
-
 }
